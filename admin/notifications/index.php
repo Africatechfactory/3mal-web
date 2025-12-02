@@ -6,22 +6,22 @@
     <div class="row">
         <div class="col-sm-2 p-0">
         <div class="left_pane">
- <div class="heading">
+            <div class="heading">
                 <!-- <h1>John Okoye</h1> -->
                 <img src="https://3malgroup.com/images/logo.png" width="100px" height="auto" class="img-fluid">
             </div>
             <ul class="navbar_nav">
-                <li><a href="https://3malgroup.com/admin/dashboard/"><i class="bi bi-grid"></i> Dashboard</a></li>
-                <li ><a href="https://3malgroup.com/admin/blog/"><i class="bi bi-info-circle"></i> Blog</a></li>
-                <li><a href="https://3malgroup.com/admin/listings/"><i class="bi bi-list-check"></i> Listings</a></li>
-                <li><a href="https://3malgroup.com/admin/case-study/"><i class="bi bi-border-style"></i> Case studies</a></li>
-                <li><a href="https://3malgroup.com/admin/events/"><i class="bi bi-calendar-event"></i> Events</a></li>
-                <li><a href="https://3malgroup.com/admin/webforms/"><i class="bi bi-ui-checks"></i> Webforms </a></li>
-                <li><a href="https://3malgroup.com/admin/settings/"><i class="bi bi-gear"></i> Settings</a></li>
+                <li><a href="<?= $adminBase ?>dashboard/"><i class="bi bi-grid"></i> Dashboard</a></li>
+                <li ><a href="<?= $adminBase ?>blog/"><i class="bi bi-info-circle"></i> Blog</a></li>
+                <li><a href="<?= $adminBase ?>listings/"><i class="bi bi-list-check"></i> Listings</a></li>
+                <li><a href="<?= $adminBase ?>case-study/"><i class="bi bi-border-style"></i> Case studies</a></li>
+                <li><a href="<?= $adminBase ?>events/"><i class="bi bi-calendar-event"></i> Events</a></li>
+                <li><a href="<?= $adminBase ?>webforms/"><i class="bi bi-ui-checks"></i> Webforms </a></li>
+                <li><a href="<?= $adminBase ?>settings/"><i class="bi bi-gear"></i> Settings</a></li>
             </ul>
         <ul class="logout_btn">
             <li>
-            <a href="https://3malgroup.com/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
+            <a href="/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
             </li>
         </ul>
         </div>

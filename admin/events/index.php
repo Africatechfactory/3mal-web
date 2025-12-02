@@ -11,17 +11,17 @@
                <img src="https://3malgroup.com/images/logo.png" width="100px" height="auto" class="img-fluid">
             </div>
             <ul class="navbar_nav">
-               <li><a href="https://3malgroup.com/admin/dashboard/"><i class="bi bi-grid"></i> Dashboard</a></li>
-               <li ><a href="https://3malgroup.com/admin/blog/"><i class="bi bi-info-circle"></i> Blog</a></li>
-               <li><a href="https://3malgroup.com/admin/listings/"><i class="bi bi-list-check"></i> Listings</a></li>
-               <li><a href="https://3malgroup.com/admin/case-study/"><i class="bi bi-border-style"></i> Case studies</a></li>
-               <li class="active"><a href="https://3malgroup.com/admin/events/"><i class="bi bi-calendar-event"></i> Events</a></li>
-               <li><a href="https://3malgroup.com/admin/webforms/"><i class="bi bi-ui-checks"></i> Webforms </a></li>
-               <li><a href="https://3malgroup.com/admin/settings/"><i class="bi bi-gear"></i> Settings</a></li>
+               <li><a href="<?= $adminBase ?>dashboard/"><i class="bi bi-grid"></i> Dashboard</a></li>
+               <li ><a href="<?= $adminBase ?>blog/"><i class="bi bi-info-circle"></i> Blog</a></li>
+               <li><a href="<?= $adminBase ?>listings/"><i class="bi bi-list-check"></i> Listings</a></li>
+               <li><a href="<?= $adminBase ?>case-study/"><i class="bi bi-border-style"></i> Case studies</a></li>
+               <li class="active"><a href="<?= $adminBase ?>events/"><i class="bi bi-calendar-event"></i> Events</a></li>
+               <li><a href="<?= $adminBase ?>webforms/"><i class="bi bi-ui-checks"></i> Webforms </a></li>
+               <li><a href="<?= $adminBase ?>settings/"><i class="bi bi-gear"></i> Settings</a></li>
             </ul>
             <ul class="logout_btn">
                <li>
-                  <a href="https://3malgroup.com/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                  <a href="/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
                </li>
             </ul>
          </div>
@@ -86,13 +86,15 @@
 </div>
 
 
-<?php
+<?php 
 include "../../components/admin-addData.php";
 include "../../components/modal.php";
 include "../../components/admin-footer.php";
 ?>
 
 <script>
+const adminBase = "<?= $adminBase ?>";
+
     $(document).on('click', '.add_event_cta', function(){
     $(".right_action_box").addClass("active");
     $(".fixed_bg").fadeIn(1000);
@@ -154,7 +156,7 @@ include "../../components/admin-footer.php";
     $('.addEvent').submit(function (event) {
        event.preventDefault();
        $.ajax({
-          url: "https://3malgroup.com/admin/models/add_event.php",
+          url: `${adminBase}models/add_event.php`,
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -214,7 +216,7 @@ include "../../components/admin-footer.php";
    
    function fetchEvents(postType, containerClass) {
       $.ajax({
-          url: `https://3malgroup.com/admin/models/fetch_event.php?fetch_all_event=${postType}`,
+          url: `${adminBase}models/fetch_event.php?fetch_all_event=${postType}`,
           type: 'GET',
           dataType: 'json',
           beforeSend: function() {
@@ -250,7 +252,7 @@ include "../../components/admin-footer.php";
                                                   <div class="dropdown-divider"></div>
                                                   <a class="dropdown-item share_share_btn" target="${dataId}">Share</a>
                                                   <div class="dropdown-divider"></div>
-                                                  <a class="dropdown-item view_btn" target="_blank" href="https://3malgroup.com/store/${dataId}_${headerTitle}">View</a>
+                                                  <a class="dropdown-item view_btn" target="_blank" href="/store/${dataId}_${headerTitle}">View</a>
                                                   <div class="dropdown-divider"></div>
                                                  ${eventDropdownItems(postType, dataId)}
                                               </div>
@@ -300,7 +302,7 @@ include "../../components/admin-footer.php";
       $(".add_title").html('Update case study');
       
       $.ajax({
-          url: 'https://3malgroup.com/admin/models/edit_event_data.php',
+          url: `${adminBase}models/edit_event_data.php`,
           type: 'GET',
           dataType: 'json',
           data: { data_id: data_id },
@@ -374,10 +376,10 @@ include "../../components/admin-footer.php";
       var loader = '<span class="loader"></span>';
       var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       $('.timezone').val(timezone);
-      $('.updateEvent').submit(function (event) {
-          event.preventDefault();
-          $.ajax({
-              url: "https://3malgroup.com/admin/models/update_event.php",
+    $('.updateEvent').submit(function (event) {
+       event.preventDefault();
+       $.ajax({
+              url: `${adminBase}models/update_event.php`,
               method: "POST",
               data: new FormData(this),
               contentType: false,
@@ -414,9 +416,9 @@ include "../../components/admin-footer.php";
   
   
   $(document).on('click', '.archive_event_btn', function(){
-      const data_id = $(this).attr('target');
-      $.ajax({
-          url: 'https://3malgroup.com/admin/models/update_post_status.php',
+    const data_id = $(this).attr('target');
+    $.ajax({
+        url: `${adminBase}models/update_post_status.php`,
           type: 'GET',
           dataType: 'json',
           data: { archive_event: data_id },
@@ -440,10 +442,10 @@ include "../../components/admin-footer.php";
       });
   });
   
-  $(document).on('click', '.publish_event_btn', function(){
-      const data_id = $(this).attr('target');
-      $.ajax({
-          url: 'https://3malgroup.com/admin/models/update_post_status.php',
+$(document).on('click', '.publish_event_btn', function(){
+    const data_id = $(this).attr('target');
+    $.ajax({
+        url: `${adminBase}models/update_post_status.php`,
           type: 'GET',
           dataType: 'json',
           data: { publish_event: data_id },
@@ -467,10 +469,10 @@ include "../../components/admin-footer.php";
       });
   });
   
-  $(document).on('click', '.trash_event_btn', function(){
-      const data_id = $(this).attr('target');
-      $.ajax({
-          url: 'https://3malgroup.com/admin/models/update_post_status.php',
+$(document).on('click', '.trash_event_btn', function(){
+    const data_id = $(this).attr('target');
+    $.ajax({
+        url: `${adminBase}models/update_post_status.php`,
           type: 'GET',
           dataType: 'json',
           data: { trash_event: data_id },
@@ -504,10 +506,10 @@ include "../../components/admin-footer.php";
       <button type="button" class="btn  close_modal_btn" data-dismiss="modal" aria-label="Close">Close</button>
       <button type="button" target="${data_id}" class="btn main_delete_action">Delete</button>
       `);
-      $(".main_delete_action").click(function () {
-         const data_id = $(this).attr('target')
-         $.ajax({
-            url: "https://3malgroup.com/admin/models/delete.php",
+    $(".main_delete_action").click(function () {
+       const data_id = $(this).attr('target')
+       $.ajax({
+            url: `${adminBase}models/delete.php`,
             method: "GET",
             data: { delete_event: data_id },
             beforeSend: function () {

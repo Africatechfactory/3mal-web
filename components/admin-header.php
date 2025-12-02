@@ -1,3 +1,7 @@
+<?php
+// Base path for admin URLs; adjust if the admin lives in a subdirectory.
+$adminBase = $adminBase ?? '/admin/';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
