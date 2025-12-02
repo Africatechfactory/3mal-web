@@ -11,7 +11,7 @@
                </ul>
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item icon_box">
-                     <a class="nav-link" href="https://3malgroup.com/admin/notifications/">
+                     <a class="nav-link" href="<?= $adminBase ?>notifications/">
                      <i class="bi bi-bell"></i>
                     </a>
                   </li>

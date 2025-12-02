@@ -155,13 +155,13 @@
             <div class="row">
                <div class="col-sm-6">
                   <div class="text_box">
-                     <h2 class="logo"><img src="https://3malgroup.com/images/logo_fff.png" alt="3Mal Group" width="60px" height="auto" class="img-fluid"></h2>
+                     <h2 class="logo"><img src="/images/logo_fff.png" alt="3Mal Group" width="60px" height="auto" class="img-fluid"></h2>
                      <ul>
-                        <li><a href="https://3malgroup.com/about/">Our people</a></li>
-                        <li><a href="https://3malgroup.com/case-study/">Our works</a></li>
-                         <!-- <li><a href="https://3malgroup.com/strategy/">Our strategy</a></li> -->
-                         <li><a href="https://3malgroup.com/blog/">Blog</a></li>
-                        <li><a href="https://3malgroup.com/contact/">Contact us</a></li>
+                        <li><a href="/about/">Our people</a></li>
+                        <li><a href="/case-study/">Our works</a></li>
+                        <!-- <li><a href="https://3malgroup.com/strategy/">Our strategy</a></li> -->
+                         <li><a href="/blog/">Blog</a></li>
+                        <li><a href="/contact/">Contact us</a></li>
                         <!--<li><a href="#">Careers</a></li>-->
                      </ul>
                   </div>
@@ -203,16 +203,16 @@
             </div>
          </div>
          <div class="bottom">
-            <img src="https://3malgroup.com/images/logo_half.png"  alt="3mal Group" class="img-fluid">
+            <img src="/images/logo_half.png"  alt="3mal Group" class="img-fluid">
          </div>
       </div>
       <div class="col-sm-1"></div>
    </div>
 </div>
-<script src="https://3malgroup.com/js/jquery.min.js"></script>
-<script src="https://3malgroup.com/js/bootstrap.min.js"></script>
-<script src="https://3malgroup.com/js/swiper.min.js"></script>
-<script src="https://3malgroup.com/js/ckeditor.js"></script>
-<script src="https://3malgroup.com/js/main.js"></script>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/ckeditor.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

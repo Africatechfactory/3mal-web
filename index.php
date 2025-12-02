@@ -139,7 +139,7 @@
             <div class="row">
                <div class="col-sm-12 col-12 col-md-12 col-lg-6 col-xl-6">
                   <div class="item-box"  data-aos="fade-up">
-                     <a href="https://3malgroup.com/case-study/?category=Branding">
+                     <a href="/case-study/?category=Branding">
                         <span>Branding</span>
                         <h2>Giving your business an identity</h2>
                         <p>We are focused on totally transforming your brand, from visuals to messaging, giving your company a unique identity that aligns with your business goals and appeals to your target audience</p>
@@ -148,7 +148,7 @@
                </div>
                <div class="col-sm-12 col-12 col-md-12 col-lg-6 col-xl-6">
                   <div class="item-box"  data-aos="fade-up">
-                     <a href="https://3malgroup.com/case-study/?category=Event promotion">
+                     <a href="/case-study/?category=Event promotion">
                         <span>Event promotion</span>
                         <h2>Create an event they can't resist</h2>
                         <p>Through creative branding, we create memorable event branding that drives high attendance and engagement.</p>
@@ -157,7 +157,7 @@
                </div>
                <div class="col-sm-12 col-12 col-md-12 col-lg-6 col-xl-6">
                   <div class="item-box"  data-aos="fade-up">
-                     <a href="https://3malgroup.com/case-study/?category=B2B2C experiential marketing">
+                     <a href="/case-study/?category=B2B2C experiential marketing">
                         <span>B2B2C experiential marketing</span>
                         <h2>Investing in experiences</h2>
                         <p>We are all about helping you provide a wholesome and sensory experience to your target audience thus increasing sales and improving customer satisfaction.</p>
@@ -166,7 +166,7 @@
                </div>
                <div class="col-sm-12 col-12 col-md-12 col-lg-6 col-xl-6">
                   <div class="item-box"  data-aos="fade-up">
-                     <a href="https://3malgroup.com/case-study/?category=Digital marketing">
+                     <a href="/case-study/?category=Digital marketing">
                         <span>Digital marketing</span>
                         <h2>Discover the power of digital marketing</h2>
                         <p>We help medium to large organizations leverage digital advertising to target new markets and accurately measure the effectiveness of your campaigns in real-time..</p>
@@ -176,7 +176,7 @@
                <div class=" col-lg-3 col-xl-3"></div>
                <div class="col-sm-12 col-12 col-md-12 col-lg-6 col-xl-6">
                   <div class="item-box mb-0"  data-aos="fade-up">
-                     <a href="https://3malgroup.com/case-study/?category=User centered design">
+                     <a href="/case-study/?category=User centered design">
                         <span>User centered design</span>
                         <h2>Creativity at it's peak</h2>
                         <p>Nothing drives sales like a good “buying environment”. Through the power of high-definition graphic designs, we create unmatched consumer experiences.</p>

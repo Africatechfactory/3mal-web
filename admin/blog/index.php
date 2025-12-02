@@ -11,17 +11,17 @@
                <img src="https://3malgroup.com/images/logo.png" width="100px" height="auto" class="img-fluid">
             </div>
             <ul class="navbar_nav">
-               <li><a href="https://3malgroup.com/admin/dashboard/"><i class="bi bi-grid"></i> Dashboard</a></li>
-               <li class="active"><a href="https://3malgroup.com/admin/blog/"><i class="bi bi-info-circle"></i> Blog</a></li>
-               <li><a href="https://3malgroup.com/admin/listings/"><i class="bi bi-list-check"></i> Listings</a></li>
-               <li><a href="https://3malgroup.com/admin/case-study/"><i class="bi bi-border-style"></i> Case studies</a></li>
-               <li><a href="https://3malgroup.com/admin/events/"><i class="bi bi-calendar-event"></i> Events</a></li>
-               <li><a href="https://3malgroup.com/admin/webforms/"><i class="bi bi-ui-checks"></i> Webforms </a></li>
-               <li><a href="https://3malgroup.com/admin/settings/"><i class="bi bi-gear"></i> Settings</a></li>
+               <li><a href="<?= $adminBase ?>dashboard/"><i class="bi bi-grid"></i> Dashboard</a></li>
+               <li class="active"><a href="<?= $adminBase ?>blog/"><i class="bi bi-info-circle"></i> Blog</a></li>
+               <li><a href="<?= $adminBase ?>listings/"><i class="bi bi-list-check"></i> Listings</a></li>
+               <li><a href="<?= $adminBase ?>case-study/"><i class="bi bi-border-style"></i> Case studies</a></li>
+               <li><a href="<?= $adminBase ?>events/"><i class="bi bi-calendar-event"></i> Events</a></li>
+               <li><a href="<?= $adminBase ?>webforms/"><i class="bi bi-ui-checks"></i> Webforms </a></li>
+               <li><a href="<?= $adminBase ?>settings/"><i class="bi bi-gear"></i> Settings</a></li>
             </ul>
             <ul class="logout_btn">
                <li>
-                  <a href="https://3malgroup.com/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                  <a href="/logout.php"><i class="bi bi-box-arrow-right"></i> Logout</a>
                </li>
             </ul>
          </div>
@@ -149,7 +149,7 @@ $(document).on('click', '.add_post_cta', function(){
     $('.addBlogPost').submit(function (event) {
        event.preventDefault();
        $.ajax({
-          url: "https://3malgroup.com/admin/models/add_post.php",
+          url: "../models/add_post.php",
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -211,7 +211,7 @@ $(document).on('click', '.add_post_cta', function(){
 function fetchPosts(postType, containerClass) {
     var loader = "<span class='loader'></span>";
     $.ajax({
-        url: `https://3malgroup.com/admin/models/fetch_posts.php?fetch_all_post=${postType}`,
+        url: `../models/fetch_posts.php?fetch_all_post=${postType}`,
         type: 'GET',
         dataType: 'json',
         beforeSend: function () {
@@ -247,7 +247,7 @@ function fetchPosts(postType, containerClass) {
                                                 <div class="dropdown-divider"></div>
                                                 <a class="dropdown-item share_post_btn" target="${dataId}">Share</a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item view_btn" target="_blank" href="https://3malgroup.com/article/${dataId}_${headerTitle}">View</a>
+                                                <a class="dropdown-item view_btn" target="_blank" href="/article/${dataId}_${headerTitle}">View</a>
                                                 <div class="dropdown-divider"></div>
                                                ${postDropdownItems(postType, dataId)}
                                             </div>
@@ -301,7 +301,7 @@ $(document).on('click', '.edit_post_btn', function(){
     $(".fixed_bg").fadeIn(1000);
     $(".add_title").html('Update Blog post');
     $.ajax({
-        url: 'https://3malgroup.com/admin/models/edit_post_data.php',
+        url: '../models/edit_post_data.php',
         type: 'GET',
         dataType: 'json',
         beforeSend: function () {
@@ -373,7 +373,7 @@ $(document).on('click', '.update_post_btn', function () {
     $('.updateBlogPost').submit(function (event) {
        event.preventDefault();
        $.ajax({
-          url: "https://3malgroup.com/admin/models/update_post.php",
+          url: "../models/update_post.php",
           method: "POST",
           data: new FormData(this),
           contentType: false,
@@ -412,7 +412,7 @@ $(document).on('click', '.update_post_btn', function () {
   $(document).on('click', '.draft_post_btn', function(){
     const blog_id = $(this).attr('target');
     $.ajax({
-        url: 'https://3malgroup.com/admin/models/update_post_status.php',
+        url: '../models/update_post_status.php',
         type: 'GET',
         dataType: 'json',
         data: { draft_post: blog_id },
@@ -441,7 +441,7 @@ $(document).on('click', '.update_post_btn', function () {
 $(document).on('click', '.publish_post_btn', function(){
     const blog_id = $(this).attr('target');
     $.ajax({
-        url: 'https://3malgroup.com/admin/models/update_post_status.php',
+        url: '../models/update_post_status.php',
         type: 'GET',
         dataType: 'json',
         data: { publish_post: blog_id },
@@ -470,7 +470,7 @@ $(document).on('click', '.publish_post_btn', function(){
 $(document).on('click', '.trash_post_btn', function(){
     const blog_id = $(this).attr('target');
     $.ajax({
-        url: 'https://3malgroup.com/admin/models/update_post_status.php',
+        url: '../models/update_post_status.php',
         type: 'GET',
         dataType: 'json',
         data: { trash_post: blog_id },
@@ -508,7 +508,7 @@ $(document).on('click', '.delete_post_btn', function () {
     $(".main_delete_action").click(function () {
        const data_id = $(this).attr('target')
        $.ajax({
-          url: "https://3malgroup.com/admin/models/delete.php",
+          url: "../models/delete.php",
           method: "GET",
           data: { delete_post: data_id },
           beforeSend: function () {

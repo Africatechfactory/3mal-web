@@ -7,9 +7,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include "../../includes/session.php";
-include "../../database/config.php";
-include "../../includes/functions.php";
+$rootPath = dirname(__DIR__, 2);
+include $rootPath . "/includes/session.php";
+include $rootPath . "/database/config.php";
+include $rootPath . "/includes/functions.php";
 
 function fetchCasestudy($status) {
     global $pdo;
@@ -19,17 +20,18 @@ function fetchCasestudy($status) {
                     c.data_id, 
                     c.title, 
                     c.created_date, 
-                    MIN(i.image_url) as image_url
-                    FROM 
+                    MIN(i.image_url) AS image_url
+                  FROM 
                     case_study c
-                    LEFT JOIN 
+                  LEFT JOIN 
                     images i ON c.data_id = i.data_id
-                    WHERE 
+                  WHERE 
                     c.pub_status = ?
-                    GROUP BY 
+                  GROUP BY 
                     c.data_id, 
                     c.title, 
-                    c.created_date ORDER BY c.id DESC";
+                    c.created_date
+                  ORDER BY c.created_date DESC";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$status]);
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
