@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Data</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Questrial&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: "Urbanist", serif;
+        }
+        .user-details { display: none; }
+        .user-details.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-5">
+       <div class="row justify-content-center">
+           <div class="col-md-10">
+                <h4>Registered Users</h4>
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Nationality</th>
+                    <th>Gender</th>
+                    <th>Attendance Mode</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- Dynamically populated rows will go here -->
+            </tbody>
+        </table>
+           </div>
+       </div>
+    </div>
+
+    <!-- Modal for displaying user details -->
+    <div class="modal fade" id="userDetailsModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="userDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userDetailsModalLabel">User Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="fullDetails">
+                    <!-- Full details will be dynamically inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Fetch user data on page load
+            $.ajax({
+                url: 'https://3malgroup.com/yangg/models/get-users.php?fetch_all_users',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    let count = 1;
+                    data.forEach(function (user) {
+                        const tableRow = `
+                            <tr>
+                                <td>${count}</td>
+                                <td>${user.name}</td>
+                                <td>${user.email}</td>
+                                <td>${user.phone}</td>
+                                <td>${user.nationality}</td>
+                                <td>${user.gender}</td>
+                                <td>${user.attendance}</td>
+                                <td><button class="btn btn-info view-btn" data-id="${user.id}">View More</button></td>
+                            </tr>
+                        `;
+                        count++;
+                        $('#userTableBody').append(tableRow);
+                    });
+                },
+                error: function () {
+                    alert('Error fetching user data.');
+                }
+            });
+
+            // Handle the "View More" button click event
+          $(document).on('click', '.view-btn', function () {
+    const userId = $(this).data('id');
+
+    // Make AJAX request to fetch full user details based on user ID
+    $.ajax({
+        url: 'https://3malgroup.com/yangg/models/get-users.php?',
+        method: 'GET',
+        data: {
+            id: userId, 
+            fetch_by_id: true
+        },
+        dataType: 'json',
+        success: function (data) {
+            // Show user details in the modal
+            let detailsHTML = `
+                <p><strong>Full Name:</strong> ${data.first_name} ${data.last_name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>Nationality:</strong> ${data.nationality}</p>
+                <p><strong>Gender:</strong> ${data.gender}</p>
+                <p><strong>Attendance Mode:</strong> ${data.attendance}</p>
+                <p><strong>Occupation:</strong> ${data.occupation}</p>
+                <p><strong>Organization:</strong> ${data.organization || 'N/A'}</p>
+                <p><strong>Country of Residence:</strong> ${data.country}</p>
+                <p><strong>Member of YANGG?</strong> ${data.member_of_yangg}</p>
+                <p><strong>Attendance Type:</strong> ${data.attendance_type}</p>
+                <p><strong>Registration Fee Aware:</strong> ${data.registration_fee_aware}</p>
+                <p><strong>Willing to Pay Fee:</strong> ${data.willing_to_pay_fee}</p>
+                <p><strong>Travel City:</strong> ${data.travel_city || 'N/A'}</p>
+                <p><strong>Visa Requirement:</strong> ${data.visa_requirement}</p>
+                <p><strong>Motivation:</strong> ${data.motivation || 'N/A'}</p>
+                <p><strong>Expectations:</strong> ${data.expectations || 'N/A'}</p>
+                <p><strong>Heard About AYS:</strong> ${data.hear_about_ays || 'N/A'}</p>
+                <p><strong>Africa Progress:</strong> ${data.africa_progress || 'N/A'}</p>
+                <p><strong>Africa Challenge:</strong> ${data.africa_challenge || 'N/A'}</p>
+                <p><strong>Heard SDGs:</strong> ${data.heard_sdgs || 'N/A'}</p>
+                <p><strong>Resonate SDGs:</strong> ${data.resonate_sdgs || 'N/A'}</p>
+                <p><strong>Africa Inspiration:</strong> ${data.africa_inspiration || 'N/A'}</p>
+                <p><strong>Africa Development:</strong> ${data.africa_development || 'N/A'}</p>
+                <p><strong>Created Date:</strong> ${data.created_date}</p>
+            `;
+            
+            // Set the modal content
+            $('#fullDetails').html(detailsHTML);
+
+            // Show the modal
+            $('#userDetailsModal').modal('show');
+        },
+        error: function () {
+            alert('Error fetching user details.');
+        }
+    });
+});
+
+        });
+    </script>
+</body>
+</html>

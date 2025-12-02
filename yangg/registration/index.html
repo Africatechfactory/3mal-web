@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Questrial&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: "Urbanist", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+        .form-step { display: none; }
+        .form-step-active { display: block; }
+        .step-indicator { text-align: center; margin-bottom: 30px; display: flex; flex-direction: row; 	justify-content: space-evenly; align-items: center; }
+        input.form-control, select.custom-select {
+                height: calc(2em + .75rem + 2px);
+        }
+        .img-box {
+            background-image: url('https://camcrewproduction.com/wp-content/uploads/2023/12/corporate-event-photographer.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+        }
+            #multiStepForm  {
+            padding: 30px 10px;
+        }
+        #multiStepForm h1 {
+            font-weight: 900;
+            font-size: 2em;
+            text-align:center;
+            margin-bottom: 30px; 
+            position: static;
+            top: 10px;
+            background: #fff;
+        }
+           #multiStepForm h4 {
+            font-weight: 600;
+            font-size: 1.5em;
+            margin-bottom: 20px; 
+        }
+          .step-indicator span {
+        font-weight: light;
+        color: #aeaeae;
+        font-size: .9em;
+        }
+        .step-indicator span.active {
+        font-weight: bold;
+        color: #007bff;
+        }
+      
+        .overflow-y-auto {
+            overflow: auto;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+          form label {
+            font-size: .8em;
+            margin-bottom: 5px;
+        }
+        
+        @media screen and (max-width:976px) {
+            .mobile-hidden {
+                display: none;
+            }
+            #multiStepForm h1 {
+            font-size: 1.5em;
+            margin-bottom: 30px; 
+        }
+           #multiStepForm h4 {
+            font-size: 1em;
+            margin-bottom: 15px; 
+        }
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-lg-7 col-xl-7 p-0 mobile-hidden">
+          <div class="img-box"></div>
+      </div>
+      <div class="col-sm-12 col-12 col-md-12 col-lg-5 col-xl-5 col-sm-12 overflow-y-auto">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-8 col-xl-10">
+                <form id="multiStepForm">
+                    <h1>AYS Registration form</h1>
+          <div id="responseMessage" class="mt-3"></div>
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <span class="active" id="step1Indicator">Step 1</span>
+            <span id="step2Indicator">Step 2</span>
+            <span id="step3Indicator">Step 3</span>
+        </div>
+        
+           <div class="form-group" hidden>
+                <label for="timezone">Timezone</label>
+                <input type="text" class="form-control" id="timezone" name="timezone">
+            </div>
+
+        <!-- Step 1 -->
+        <div class="form-step form-step-active" id="step1">
+            <h4>Personal Information</h4>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="first_name" required>
+            </div>
+            <div class="form-group">
+                <label for="middleName">Middle Name</label>
+                <input type="text" class="form-control" id="middleName" name="middle_name">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="last_name" required>
+            </div>
+            <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <input type="text" class="form-control" id="nationality" name="nationality" required>
+            </div>
+                <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="custom-select" id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation</label>
+                <input type="text" class="form-control" id="occupation" name="occupation" required>
+            </div>
+            <div class="form-group">
+                <label for="organization">Organization/Company</label>
+                <input type="text" class="form-control" id="organization" name="organization">
+            </div>
+            <button type="button" class="btn btn-primary form-control" id="next1">Next</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" id="step2">
+            <h4>Contact Information</h4>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country of Residence</label>
+                <input type="text" class="form-control" id="country" name="country" required>
+            </div>
+         
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                     <button type="button" class="btn btn-secondary form-control" id="prev2">Previous</button>
+                </div>
+                <div class="form-group col-md-6">
+                      <button type="button" class="btn btn-primary form-control" id="next2">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" id="step3">
+            <h4>Additional Information</h4>
+            <div class="form-group">
+                <label for="attendance">Attendance Mode</label>
+                <select class="custom-select" id="attendance" name="attendance">
+                    <option value="Physical">Physical</option>
+                    <option value="Virtual">Virtual</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="memberOfYangg">Member of YANGG?</label>
+                <select class="custom-select" id="memberOfYangg" name="member_of_yangg">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+             <div class="form-group">
+                <label for="registration_fee_aware">Are you familiar with the registration fee?</label>
+                <select class="custom-select" id="registration_fee_aware" name="registration_fee_aware">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+               <div class="form-group">
+                <label for="willing_to_pay_fee">Are you willing to pay the registration fee?</label>
+                <select class="custom-select" id="willing_to_pay_fee" name="willing_to_pay_fee">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            
+                 <div class="form-group">
+                <label for="visa_requirement">Do you require a visa to attend?</label>
+                <select class="custom-select" id="visa_requirement" name="visa_requirement">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            
+            
+                 <div class="form-group">
+                <label for="heard_sdgs">Have you hear about UN's Sustainable Development Goals (SDGs)?</label>
+                <select class="custom-select" id="heard_sdgs" name="heard_sdgs">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            
+               <div class="form-group">
+                <label for="resonate_sdgs">Which of the SDGs resonates with you the most and why?</label>
+                <textarea class="form-control" id="resonate_sdgs" name="resonate_sdgs" rows="3"></textarea>
+            </div>
+            
+             <div class="form-group">
+                <label for="africa_inspiration">What is one achievement or innovation from Africa that inspires you the most?</label>
+                <textarea class="form-control" id="africa_inspiration" name="africa_inspiration" rows="3"></textarea>
+            </div>
+            
+               <div class="form-group">
+                <label for="africa_development">If you could contribute to one of Africa's development, what would it be and why?</label>
+                <textarea class="form-control" id="africa_development" name="africa_development" rows="3"></textarea>
+            </div>
+            
+                  <div class="form-group">
+                <label for="attendance_type">Attendance Type</label>
+                <select class="custom-select" id="attendance_type" name="attendance_type">
+                    <option value="Group sponsored">Group Sponsored</option>
+                    <option value="Self sponsored">Self Sponsored</option>
+                </select>
+            </div>
+              <div class="form-group">
+                <label for="travel_city">Which city are you traveling from?</label>
+                <input type="text" class="form-control" id="travel_city" name="travel_city" required>
+            </div>
+            <div class="form-group">
+                <label for="hearAboutAys">How did you hear about AYS?</label>
+                <textarea class="form-control" id="hearAboutAys" name="hear_about_ays" rows="3"></textarea>
+            </div>
+            
+                <div class="form-group">
+                <label for="expectations">What are your expectations from AYS?</label>
+                <textarea class="form-control" id="expectations" name="expectations" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="motivation">Motivation for Participation</label>
+                <textarea class="form-control" id="motivation" name="motivation" rows="3"></textarea>
+            </div>
+            
+              <div class="form-group">
+                <label for="africa_progress">How would you describe Africa's progress over the years?</label>
+                <textarea class="form-control" id="africa_progress" name="africa_progress" rows="3"></textarea>
+            </div>
+               <div class="form-group">
+                <label for="africa_challenge">What do you believe is the most significant challenge facing Africa today?</label>
+                <textarea class="form-control" id="africa_challenge" name="africa_challenge" rows="3"></textarea>
+            </div>
+            
+                  <div class="form-group">
+                <label for="keep_updates">Do you want to keep recieving updates about YANGG?</label>
+                <select class="custom-select" id="keep_updates" name="keep_updates">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <button type="button" class="btn btn-secondary form-control" id="prev3">Previous</button>
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-success submit-btn form-control">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+                </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   $(document).ready(function () {
+    let currentStep = 1;
+
+  function updateStep() {
+        $(".form-step").removeClass("form-step-active");
+        $(`#step${currentStep}`).addClass("form-step-active");
+        $(".step-indicator span").removeClass("active");
+        $("#step" + currentStep + "Indicator").addClass("active");
+    }
+
+
+    // Function to validate current step
+    function validateStep() {
+        let isValid = true;
+        $(`#step${currentStep} input, #step${currentStep} select`).each(function () {
+            if ($(this).val() === "" || $(this).val() === null) {
+                isValid = false;
+                $(this).addClass("border-danger");
+                $(this).on('input', function () {
+                    $(this).removeClass("border-danger");
+                });
+            }
+        });
+        return isValid;
+    }
+
+    // Next button handlers
+    $("#next1").click(function () {
+        if (validateStep()) {
+            currentStep++;
+            updateStep();
+        }
+    });
+
+    $("#next2").click(function () {
+        if (validateStep()) {
+            currentStep++;
+            updateStep();
+        }
+    });
+
+    // Previous button handlers
+    $("#prev2").click(function () {
+        currentStep--;
+        updateStep();
+    });
+
+    $("#prev3").click(function () {
+        currentStep--;
+        updateStep();
+    });
+
+    // Form submission handler
+    $("#multiStepForm").submit(function (e) {
+        e.preventDefault();
+        var loader = "<span class='loader'></span>";
+        var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        $('#timezone').val(timezone);
+        const formData = $(this).serialize();
+
+        $.ajax({
+            url: "https://3malgroup.com/yangg/models/reg-form.php",
+            type: "POST",
+            data: formData,
+            beforeSend: function () {
+                $("#responseMessage").html(`<div class="alert alert-info">Submitting your data, please wait...</div>`);
+                $('.submit-btn').html(loader);
+            },
+            complete: function () {
+                $('.submit-btn').html('Submit');
+            },
+            success: function (response) {
+                if (response.status === "success") {
+                    $("#responseMessage").html(`<div class="alert alert-success">${response.message}</div>`);
+                    $('#multiStepForm')[0].reset();
+                    $(".form-step").removeClass("form-step-active");
+                    $(".step-indicator span").removeClass("active");
+                    currentStep = 1;
+                    $("#step" + currentStep + "Indicator").addClass("active");
+                    updateStep();
+                } else {
+                    $("#responseMessage").html(`<div class="alert alert-danger">${response.message}</div>`);
+                }
+            },
+            error: function () {
+                $("#responseMessage").html(`<div class="alert alert-danger">An unexpected error occurred. Please try again.</div>`);
+            },
+            complete: function () {
+                console.log("AJAX request completed.");
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
