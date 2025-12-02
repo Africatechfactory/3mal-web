@@ -92,7 +92,7 @@ $(document).ready(function () {
       var formData = new FormData(form[0]);
       if (formData != "") {
          $.ajax({
-            url: "https://3malgroup.com/models/post_contact.php",
+            url: "/models/post_contact.php",
             type: "POST",
             data: formData,
             cache: false,
