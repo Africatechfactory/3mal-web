@@ -85,80 +85,152 @@ function strip_cleanUrl($string){
           }
       }
       
-      function sendEmail($to, $subject, $mailHeader, $mailBody,  $username = '',) {
+      function sendEmail($to, $subject, $mailHeader, $mailBody, $username = '') {
   $greeting = $username ? "Hello $username," : "Hello";
   $year = date("Y");
-    $emailTemplate = '
-    <!DOCTYPE html>
-    <html lang="en">
-       <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
-       <body style="margin: 0; padding: 0;">
-          <div style="width: 100%; background: #f7f7f7; padding: 50px 0;">
-            <div style="width: 800px; margin: 0 auto;">
-              <div style="width: 100%; margin: 0 auto; background: #fff; padding: 0px 0px;">
-                <div style="background: #fff; background-position: center; background-repeat: no-repeat; background-size: cover; padding: 16px 10px; color: #fff;">
-                   <div style="padding: 30px 15px;">
-                      <div style="margin-bottom: 30px; ">
-                         <img src="https://3malgroup.com/images/logo.png"  width="150px" height="auto" alt="3MAL Group" class="img-fluid">
-                      </div>
-                      <p class="hello" style="font-family: \'Trebuchet MS\', sans-serif; color: #000; font-weight: 300; font-size: 16px; margin-bottom: 40px;">' . $greeting . '</p>
-                      <div style="text-align:left">
-                         <h2 style="font-size: 25px; font-weight: 600; color: #000; font-family: \'Trebuchet MS\', sans-serif;">' . $mailHeader . '</h2>
-                      </div>
-                      <div class="mail-main-body-box" style="padding: 0px 0">
-                         <div class="text-body" style="font-size: 16px; color: #333333; font-family: \'Trebuchet MS\', sans-serif; margin-bottom: 30px; font-weight: 300;">' . $mailBody . '</div>
-                         <div>
-                            <p style="font-size: 16px; color: #333333; font-family: \'Trebuchet MS\', sans-serif; margin-bottom: 0; line-height: 0; font-weight: 300;">
-                               Best regards
-                            </p>
-                            <p style="font-size: 16px; color: #333333; font-family: \'Trebuchet MS\', sans-serif; margin-bottom: 0; font-weight: 600;">
-                               Team 3MAL
-                            </p>
-                         </div>
-                         <br>
-                         <br>
-                         <div style="text-align:center; margin: 0 auto;">
-                            <p style="font-size: 16px; color: #777777; line-height: 30px; font-family: \'Trebuchet MS\', sans-serif; font-weight: 300; margin-bottom: 30px;">
-                               For any feedback or inquiries, get in touch with us at
-                               <a href="mailto:hello@3malgroup.com">hello@3malgroup.com</a>.
-                            </p>
-                            <div>
-                               <a style="color: #000; text-decoration: none; margin: 0 10px;" href="https://www.facebook.com/3MALOFFICIAL?mibextid=ZbWKwL">
-                               <img src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Facebook_svg-256.png" alt="Facebook" width="27px" height="auto" />
-                               </a>
-                               <a style="color: #000; text-decoration: none; margin: 0 10px;" href="https://www.instagram.com/3mal_official?igsh=MTRzY3RzcjEzOW83aw==">
-                               <img src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Instagram_svg-256.png" alt="Instagram" width="27px" height="auto" />
-                               </a>
-                               <a style="color: #000;text-decoration: none; margin: 0 10px;" href="https://www.linkedin.com/company/3mal-group/" style="padding: 0px 0">
-                                <img src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Linkedin_svg-256.png" alt="Facebook" width="27px" height="auto" />
-                               </a>
-                                 <a style="color: #000;text-decoration: none; margin: 0 10px;" href="https://x.com/3mal_official?t=iWvRIQR8mRYJ729le5xxnA&s=09" style="padding: 0px 0">
-                               <img src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/1227/X-128.png" alt="Facebook" width="23px" height="auto" />
-                               </a>
-                            </div>
-                         </div>
-                         <div style="margin: 0 auto; margin-top: 30px;">
-                            <p style="font-size: 12px; color: #666666; font-weight: 300; font-family: \'Trebuchet MS\', sans-serif; text-align: center;">
-                               &copy; 3MAL Group '.$year.'. 
-                            </p>
-                         </div>
-                      </div>
-                   </div>
-                </div>
+  $emailTemplate = '
+  <!DOCTYPE html>
+  <html lang="en">
+     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      </head>
+     <body style="margin: 0; padding: 0;">
+        <div style="width: 100%; background: #f7f7f7; padding: 50px 0;">
+          <div style="width: 800px; margin: 0 auto;">
+            <div style="width: 100%; margin: 0 auto; background: #fff; padding: 0px 0px;">
+              <div style="background: #fff; background-position: center; background-repeat: no-repeat; background-size: cover; padding: 16px 10px; color: #fff;">
+                 <div style="padding: 30px 15px;">
+                    <div style="margin-bottom: 30px; ">
+                       <img src="https://3malgroup.com/images/logo.png"  width="150px" height="auto" alt="3MAL Group" class="img-fluid">
+                    </div>
+                    <p class="hello" style="font-family: \'Trebuchet MS\', sans-serif; color: #000; font-weight: 300; font-size: 16px; margin-bottom: 40px;">' . $greeting . '</p>
+                    <div style="text-align:left">
+                       <h2 style="font-size: 25px; font-weight: 600; color: #000; font-family: \'Trebuchet MS\', sans-serif;">' . $mailHeader . '</h2>
+                    </div>
+                    <div class="mail-main-body-box" style="padding: 0px 0">
+                       <div class="text-body" style="font-size: 16px; color: #333333; font-family: \'Trebuchet MS\', sans-serif; margin-bottom: 30px; font-weight: 300;">' . $mailBody . '</div>
+                       <div>
+                          <p style="font-size: 16px; color: #333333; font-family: \'Trebuchet MS\', sans-serif; margin-bottom: 0; line-height: 0; font-weight: 300;">
+                             Best regards
+                          </p>
+                          <p style="font-size: 16px; color: #333333; font-family: \'Trebuchet MS\', sans-serif; margin-bottom: 0; font-weight: 600;">
+                             Team 3MAL
+                          </p>
+                       </div>
+                       <br>
+                       <br>
+                       <div style="text-align:center; margin: 0 auto;">
+                          <p style="font-size: 16px; color: #777777; line-height: 30px; font-family: \'Trebuchet MS\', sans-serif; font-weight: 300; margin-bottom: 30px;">
+                             For any feedback or inquiries, get in touch with us at
+                             <a href="mailto:hello@3malgroup.com">hello@3malgroup.com</a>.
+                          </p>
+                          <div>
+                             <a style="color: #000; text-decoration: none; margin: 0 10px;" href="https://www.facebook.com/3MALOFFICIAL?mibextid=ZbWKwL">
+                             <img src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Facebook_svg-256.png" alt="Facebook" width="27px" height="auto" />
+                             </a>
+                             <a style="color: #000; text-decoration: none; margin: 0 10px;" href="https://www.instagram.com/3mal_official?igsh=MTRzY3RzcjEzOW83aw==">
+                             <img src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Instagram_svg-256.png" alt="Instagram" width="27px" height="auto" />
+                             </a>
+                             <a style="color: #000;text-decoration: none; margin: 0 10px;" href="https://www.linkedin.com/company/3mal-group/" style="padding: 0px 0">
+                              <img src="https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Linkedin_svg-256.png" alt="Facebook" width="27px" height="auto" />
+                             </a>
+                               <a style="color: #000;text-decoration: none; margin: 0 10px;" href="https://x.com/3mal_official?t=iWvRIQR8mRYJ729le5xxnA&s=09" style="padding: 0px 0">
+                             <img src="https://cdn4.iconfinder.com/data/icons/social-media-black-white-2/1227/X-128.png" alt="Facebook" width="23px" height="auto" />
+                             </a>
+                          </div>
+                       </div>
+                       <div style="margin: 0 auto; margin-top: 30px;">
+                          <p style="font-size: 12px; color: #666666; font-weight: 300; font-family: \'Trebuchet MS\', sans-serif; text-align: center;">
+                             &copy; 3MAL Group '.$year.'. 
+                          </p>
+                       </div>
+                    </div>
+                 </div>
               </div>
             </div>
           </div>
        </body>
-    </html>
-    ';
-    $message = $emailTemplate;
-    $header = "From: 3MAL Group <admin@3malgroup.com> \r\n";
-    $header .= "MIME-Version: 1.0\r\n";
-    $header .= "Content-type: text/html\r\n";
-    $retval = mail($to, $subject, $message, $header);
+  </html>
+  ';
+
+  $smtpHost = getenv('SMTP_HOST');
+  $smtpPort = getenv('SMTP_PORT') ?: 587;
+  $smtpUser = getenv('SMTP_USER') ?: '';
+  $smtpPass = getenv('SMTP_PASS') ?: '';
+  $smtpEncryption = strtolower(getenv('SMTP_ENCRYPTION') ?: 'tls'); // tls or ssl
+  $smtpFrom = getenv('SMTP_FROM') ?: 'admin@3malgroup.com';
+  $smtpFromName = getenv('SMTP_FROM_NAME') ?: '3MAL Group';
+
+  if ($smtpHost) {
+      smtpSendMail($smtpHost, $smtpPort, $smtpEncryption, $smtpUser, $smtpPass, $smtpFrom, $smtpFromName, $to, $subject, $emailTemplate);
+  } else {
+      // Fallback to PHP mail if SMTP is not configured
+      $header = "From: {$smtpFromName} <{$smtpFrom}> \r\n";
+      $header .= "MIME-Version: 1.0\r\n";
+      $header .= "Content-type: text/html\r\n";
+      mail($to, $subject, $emailTemplate, $header);
+  }
+}
+
+function smtpSendMail($host, $port, $encryption, $username, $password, $fromEmail, $fromName, $to, $subject, $body) {
+    $remoteHost = ($encryption === 'ssl' ? "ssl://" : "") . $host . ":" . $port;
+    $timeout = 15;
+    $fp = @stream_socket_client($remoteHost, $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT);
+    if (!$fp) {
+        return false;
+    }
+
+    stream_set_timeout($fp, $timeout);
+
+    $read = function() use ($fp) {
+        $data = '';
+        while ($str = fgets($fp, 515)) {
+            $data .= $str;
+            if (isset($str[3]) && $str[3] === ' ') {
+                break;
+            }
+        }
+        return $data;
+    };
+
+    $sendCmd = function($cmd) use ($fp, $read) {
+        fwrite($fp, $cmd . "\r\n");
+        return $read();
+    };
+
+    $read(); // server greeting
+    $sendCmd("EHLO localhost");
+
+    if ($encryption === 'tls') {
+        $sendCmd("STARTTLS");
+        stream_socket_enable_crypto($fp, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+        $sendCmd("EHLO localhost");
+    }
+
+    if ($username && $password) {
+        $sendCmd("AUTH LOGIN");
+        $sendCmd(base64_encode($username));
+        $sendCmd(base64_encode($password));
+    }
+
+    $sendCmd("MAIL FROM:<$fromEmail>");
+    $sendCmd("RCPT TO:<$to>");
+    $sendCmd("DATA");
+
+    $headers = [];
+    $headers[] = "From: {$fromName} <{$fromEmail}>";
+    $headers[] = "To: <$to>";
+    $headers[] = "Subject: {$subject}";
+    $headers[] = "MIME-Version: 1.0";
+    $headers[] = "Content-Type: text/html; charset=UTF-8";
+    $headers[] = "Content-Transfer-Encoding: 8bit";
+
+    $data = implode("\r\n", $headers) . "\r\n\r\n" . $body . "\r\n.";
+    $sendCmd($data);
+    $sendCmd("QUIT");
+    fclose($fp);
+    return true;
 }
 
 

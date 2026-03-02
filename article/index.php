@@ -183,7 +183,7 @@
 function countComments() {
    var fetch_news_id = $(".get_news_id").text();
    $.ajax({
-      url: "https://test.3malgroup.com/models/count_row.php",
+      url: "/models/count_row.php",
       method: "POST",
       data: {
          news_id: fetch_news_id
@@ -215,7 +215,7 @@ $(document).on('click', '.post_response', function () {
    $('.response_form').submit(function (event) {
       event.preventDefault();
       $.ajax({
-         url: "https://test.3malgroup.com/models/post_comment.php",
+         url: "/models/post_comment.php",
          method: "POST",
          data: new FormData(this),
          contentType: false,
@@ -258,8 +258,8 @@ function fetchComments(news_id) {
    $("#url").attr("value", pageURL);
    $("#news_id").attr("value", news_id);
 
-   $.ajax({
-      url: "https://test.3malgroup.com/models/fetch_comment.php",
+         $.ajax({
+            url: "/models/fetch_comment.php",
       method: "GET",
       data: {
          news_id: news_id
@@ -316,8 +316,8 @@ $(document).on('click', `.reply_action_btn`, function () {
       $(`.reply_form_${comment_id} #replyTimezone`).val(timezone);
 
       $(`.reply_form_${comment_id}`).submit(function (event) {
-         $.ajax({
-            url: "https://test.3malgroup.com/models/post_reply.php",
+            $.ajax({
+               url: "/models/post_reply.php",
             type: "POST",
             data: new FormData(this),
             cache: false,
@@ -351,8 +351,8 @@ $(document).on('click', `.reply_action_btn`, function () {
 
 function fetchReplies(get_comment_id) {
    var loader = '<span class="loader"></span>';
-   $.ajax({
-      url: "https://test.3malgroup.com/models/fetch_reply.php",
+      $.ajax({
+         url: "/models/fetch_reply.php",
       method: "GET",
       data: {
          get_comment_id: get_comment_id

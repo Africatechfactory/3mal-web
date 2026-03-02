@@ -51,8 +51,8 @@ $(document).ready(function () {
       var form = $('.appointment_form');
       var formData = new FormData(form[0]);
       if (formData != "") {
-         $.ajax({
-            url: "https://3malgroup.com/models/post_appointment.php",
+      $.ajax({
+         url: "/models/post_appointment.php",
             type: "POST",
             data: formData,
             cache: false,
@@ -92,7 +92,7 @@ $(document).ready(function () {
       var formData = new FormData(form[0]);
       if (formData != "") {
          $.ajax({
-            url: "https://3malgroup.com/models/post_contact.php",
+            url: "/models/post_contact.php",
             type: "POST",
             data: formData,
             cache: false,
@@ -128,7 +128,7 @@ $(document).ready(function () {
       const fetch_caseStudy_home = 'fetch_caseStudy_home=caseStudy_home';
      
       $.ajax({
-         url: 'https://3malgroup.com/models/fetch_data.php?' + fetch_caseStudy_home,
+         url: '/models/fetch_data.php?' + fetch_caseStudy_home,
          type: 'GET',
          dataType: 'json',
          beforeSend: function () {
@@ -155,14 +155,14 @@ $(document).ready(function () {
                   var dataCard = `
                          <div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6" data-aos="fade-up">
                      <div class="item_box">
-                     <a href="https://3malgroup.com/case_study/${data_id}_${header_title}">
+                     <a href="/case_study/${data_id}_${header_title}">
                         <div class="img_box">
                            <img src="${imageUrl}" alt="${title}" class="img-fluid">
                         </div>
                         <div class="text_box">
                            <!--<span class="tagline">${tag}</span>-->
                            <h2>${title}</h2>
-                           <a href="https://3malgroup.com/case_study/${data_id}_${header_title}"><span>View case study</span> <span class="icon-box"><i class="bi bi-arrow-up-right"></i></span></a>
+                           <a href="/case_study/${data_id}_${header_title}"><span>View case study</span> <span class="icon-box"><i class="bi bi-arrow-up-right"></i></span></a>
                         </div>
                         </a>
                      </div>
@@ -182,7 +182,7 @@ $(document).ready(function () {
       });
 
       const filterCategory = $("#get_category").val();
-    let ajaxUrl = 'https://3malgroup.com/models/fetch_data.php?';
+   let ajaxUrl = '/models/fetch_data.php?';
     
     if (filterCategory !== "") {
         ajaxUrl += 'filterCategory=' + filterCategory;
@@ -217,13 +217,13 @@ $(document).ready(function () {
                     const dataCard = `
                         <div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6" data-aos="fade-up">
                             <div class="item_box">
-                                <a href="https://3malgroup.com/case_study/${data_id}_${header_title}">
+                                <a href="/case_study/${data_id}_${header_title}">
                                     <div class="img_box">
                                         <img src="${imageUrl}" alt="${title}" class="img-fluid">
                                     </div>
                                     <div class="text_box">
                                         <h2>${title}</h2>
-                                        <a href="https://3malgroup.com/case_study/${data_id}_${header_title}"><span>View case study</span> <span class="icon-box"><i class="bi bi-arrow-up-right"></i></span></a>
+                                        <a href="/case_study/${data_id}_${header_title}"><span>View case study</span> <span class="icon-box"><i class="bi bi-arrow-up-right"></i></span></a>
                                     </div>
                                 </a>
                             </div>
@@ -247,7 +247,7 @@ $(document).ready(function () {
       const fetch_posts_home = 'fetch_posts_home=posts_home';
       const fetch_all_posts = 'fetch_all_posts=posts_all';
       $.ajax({
-         url: 'https://3malgroup.com/models/fetch_data.php?' + fetch_posts_home,
+         url: '/models/fetch_data.php?' + fetch_posts_home,
          type: 'GET',
          dataType: 'json',
          beforeSend: function () {
@@ -278,7 +278,7 @@ $(document).ready(function () {
                         <div class="text_box">
                           <p class="date">${createdDate}</p>
                            <h2>${title}</h2>
-                          <a href="https://3malgroup.com/article/${data.blog_id}_${header_title}">Read more <span><i class="bi bi-arrow-up-right"></i></span></a>
+                          <a href="/article/${data.blog_id}_${header_title}">Read more <span><i class="bi bi-arrow-up-right"></i></span></a>
                         </div>
                      </div>
                   </div>
@@ -298,7 +298,7 @@ $(document).ready(function () {
       });
 
       $.ajax({
-         url: 'https://3malgroup.com/models/fetch_data.php?' + fetch_all_posts,
+         url: '/models/fetch_data.php?' + fetch_all_posts,
          type: 'GET',
          dataType: 'json',
          beforeSend: function () {
@@ -329,7 +329,7 @@ $(document).ready(function () {
                         <div class="text_box">
                           <p class="date">${createdDate}</p>
                            <h2>${title}</h2>
-                          <a href="https://3malgroup.com/article/${data.blog_id}_${header_title}">Read more <span><i class="bi bi-arrow-up-right"></i></span></a>
+                          <a href="/article/${data.blog_id}_${header_title}">Read more <span><i class="bi bi-arrow-up-right"></i></span></a>
                         </div>
                      </div>
                   </div>
@@ -452,7 +452,7 @@ $(document).ready(function () {
       var formData = new FormData(form[0]);
       if (formData != "") {
          $.ajax({
-            url: "https://3malgroup.com/models/post_newsletter.php",
+            url: "/models/post_newsletter.php",
             type: "POST",
             data: formData,
             cache: false,
@@ -492,7 +492,7 @@ $(document).ready(function () {
       $('.userReachForm').submit(function (event) {
          event.preventDefault();
          $.ajax({
-            url: "https://3malgroup.com/models/post_enquiry.php",
+            url: "/models/post_enquiry.php",
             method: "POST",
             data: new FormData(this),
             contentType: false,
